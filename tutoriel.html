@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PandoraJS</title>
+  <style>
+  	#technote{
+  		background-color: white;
+  		width:800px;
+  		padding: 50px;
+  		margin-left: auto;
+  		margin-right: auto;
+  	}
+  	img{
+  		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+  	}
+  	body{
+  		background-color: #304E6C;
+  	}
+  	pre{
+  		border: 2px solid black;
+  		background-color: lightgrey;
+  		padding: 20px;
+  	}
+  </style>
+  </head>
+  <body>
+  	
+  	<div id="technote">
+  		<img alt="pandoraJS" src="pandorajs.PNG" />
+
+  		
+  		<h1 style="text-align: center;">
+	<span style="font-size:18px;"><strong>PandoraJS</strong></span></h1>
+<p style="text-align: justify;">Bienvenue dans ce tutoriel sur comment utiliser PandoraJS. PandoraJS est n&eacute;e dans le but de r&eacute;pondre a un besoin de cr&eacute;e des designs a tuile qui poss&egrave;dent des animations dynamique tout en &eacute;tant responsive pour pouvoir s&#39;adapter &agrave; tous les &eacute;crans des futurs utilisateurs. Cette animation se veut tr&egrave;s basique, et il s&rsquo;agit d&rsquo;agrandir la zone dans laquelle l&rsquo;utilisateur est focaliser, que ce soit par un effet de &lt; onclick&nbsp;&gt; ou bien de &lt; hover &gt; tout en gardant le reste du contenu organiser et responsive. Bien s&ucirc;r l&rsquo;utilisateur pourra changer de tuiles de focalisation &agrave; tout moment et le contenu de la page se redimensionnera parfaitement.</p>
+<p style="text-align: justify;"><a href="exemple.html">Suivez ce lien pour voir des exemples d&rsquo;utilisation.</a></p>
+<p style="text-align: justify;">En plus de se vouloir pratique, PandoraJS a l&#39;ambition d&#39;&ecirc;tre simple d&#39;utilisation, c&#39;est donc pourquoi c&#39;est un plugin JQuery. C&rsquo;est pourquoi en 4 &eacute;tapes vous allez pouvoir avoir vos tuiles dynamiques.</p>
+<h2>
+	Etape 1&nbsp;: R&eacute;cup&eacute;rer le fichier PandoraJS ainsi que JQuery</h2>
+<p style="text-align: justify;">Avant de pouvoir utiliser PandoraJS il vous faudra r&eacute;cup&eacute;rer le fichier pour pouvoir l&rsquo;inclure dans votre projet.</p>
+<p style="text-align: justify;">Pour se faire il suffit de se rendre sur le github du projet&nbsp;: <a href="http://github.com/lferrand/pandoraJS">http://github.com/lferrand/pandoraJS</a></p>
+<p style="text-align: justify;">N&rsquo;oubliez pas que PandoraJS est un plugin JQuery, il faudra aussi r&eacute;cup&eacute;rer ce fichier&nbsp;: <a href="http://jquery.com/download/">http://jquery.com/download/</a></p>
+<p style="text-align: justify;">Maintenant il faut rajouter ces ficher a votre fichier HTML avec la balise &lt;script&gt;</p>
+<p>&nbsp;</p>
+<h2>
+	Etape 2&nbsp;: Votre pr&eacute;sentation HTML</h2>
+<p>&nbsp;</p>
+<p style="text-align: justify;">PandoraJS se veut le plus simple possible d&rsquo;utilisation, mais on ne vous fournis pas le contenu de vos tuile, il faudra les inclure vous-m&ecirc;me et cette partie va servir exactement a ceci.</p>
+<p style="text-align: justify;">Pour que PandoraJS fonctionne il faudra respecter un minimum de formating dans votre fichier HTML. Chaque boite de tuile devra &ecirc;tre contenue dans une balise &lt;section&gt; avec l&rsquo;id de votre choix. Dans cette &lt;section&gt; chaque ligne devra &ecirc;tre dans une balise &lt;div&gt; qui aura comme nom de class&nbsp;: wrapper. Une fois que vous avez cr&eacute;&eacute; vos div wrapper il faut maintenant cr&eacute;e vos tuiles. Chaque tuile sera plac&eacute;e dans une balise &lt;article&gt; qui portera comme nom de class&nbsp;: ligne&lt;numeroDeLaLigne&gt; . Il est important d&rsquo;inclure le num&eacute;ro de la ligne car pour l&rsquo;instant le plugin ne le d&eacute;tecte pas encore automatiquement et que celle-ci soit la premi&egrave;re dans votre liste de classe.</p>
+<p style="text-align: justify;">Finalement, le but de ce plugin &eacute;tant d&rsquo;agrandir la tuile dans laquelle l&rsquo;utilisateur est focalis&eacute; Pandora va n&eacute;cessiter qu&rsquo;on passe une classe&nbsp;: current. Il est tr&egrave;s important de le placer en &nbsp;dernier dans vos liste de class.</p>
+<p style="text-align: justify;">Mais puisque un exemple parle souvent mieux que des mots, voici a quoi devrait ressembler votre HTML.</p>
+<pre><code>
+&lt;section id="section1"&gt;
+	&lt;div class="wrapper"&gt;
+		&lt;article class="ligne1 current"&gt;
+			TEST ligne 1
+			&lt;br/&gt;boite 1
+		&lt;/article&gt;
+	    &lt;article class="ligne1"&gt;
+			TEST ligne 1
+			&lt;br/&gt;boite 2
+		&lt;/article&gt;
+	&lt;/div&gt;
+	&lt;div class="wrapper"&gt;
+		&lt;article class="ligne2"&gt;
+			TEST ligne 2
+			&lt;br/&gt;boite 1
+		&lt;/article&gt;
+		&lt;article class="ligne2"&gt;
+			TEST ligne 2
+			&lt;br/&gt;boite 2
+		&lt;/article&gt;
+		&lt;article class="ligne2"&gt;
+			TEST ligne 2
+			&lt;br/&gt;boite 3
+		&lt;/article&gt;
+	&lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<p>&nbsp;</p>
+<h2>
+	
+	Etape 3&nbsp;: Votre fichier CSS</h2>
+<p style="text-align: justify;">Malheureusement pour l&rsquo;instant PandoraJS ne fournis pas automatiquement tout le CSS n&eacute;cessaire a son fonctionnement. Il vous faudra donc faire quelques efforts encore avant de pouvoir enfin profiter de ce fabuleux outil.</p>
+<p style="text-align: justify;">On va placer quelque param&egrave;tre CSS a nos &eacute;l&eacute;ment HTML qu&rsquo;on vient de cr&eacute;er.</p>
+<p style="text-align: justify;">Il vous faudra d&rsquo;abord ajouter une width &agrave; votre &lt;section&gt; qui contiendra vos tuiles. N&rsquo;oubliez pas que PandoraJS est responsive donc h&eacute;sit&eacute; pas &agrave; utiliser une largeur en pourcentage&nbsp;!</p>
+<pre><code>
+#section1{
+	width: 100%;
+}
+</code></pre>
+<p style="text-align: justify;">Maintenant que vous avez une largeur il faut maintenant dire aux wrapper de prendre toute la largeur de la &lt;section&gt; qui les contient. On veut aussi &eacute;viter que le javascript nous cr&eacute;&eacute; du overflow par erreur, on va donc m&egrave;tre un &laquo;&nbsp;overflow&nbsp;: hidden&nbsp;;&nbsp;&raquo; et finalement pour que nos ligne soit bien on va lui rajouter un type de display, &laquo;&nbsp;display&nbsp;: flex&nbsp;&raquo;.</p>
+<pre><code>
+.wrapper {
+  	overflow:hidden;
+  	width:100%;
+  	display: flex;
+}
+</code></pre>
+<p style="text-align: justify;">Enfin on passe aux tuiles elle-m&ecirc;me. Pour les tuiles elle-m&ecirc;me vous &ecirc;tes plus ou moins libres car il s&rsquo;agit apr&egrave;s tout de votre contenu. Tout ce dont PandoraJS a besoin est que vous fixez l&rsquo;auteur de la ligne et que vous dites que le display doit &ecirc;tre en block. Heureusement &ccedil;a tombe bien, un peu plus haut nous avons cr&eacute;&eacute; une classe ligne&lt;numeroDeLaLigne&gt; qu&rsquo;on va pouvoir r&eacute;utiliser dans notre fichier CSS. On aura quelque chose du genre.</p>
+<pre><code>
+.ligne1 {
+    height: 200px;
+    display: block;
+  }
+.ligne2 {
+    height: 200px;
+    display: block;
+  }
+</code></pre>
+<h2>
+	&nbsp;Etape 4&nbsp;: Utiliser le plugin JQuery&nbsp;!</h2>
+<p style="text-align: justify;">Le meilleur et le plus facile pour la fin. Dans un nouveau fichier s&eacute;parer que vous allez faire gaffe de bien inclure apr&egrave;s le fichier JQuery et du plugin, vous allez pouvoir faire appel au super et magnifique plugin PandoraJS. Pour ce faire il vous suffira d&rsquo;une simple ligne de code&nbsp;:</p>
+<pre><code>
+$(document).ready(function() {
+	$('#section1').pandoraJS(
+	{
+		'hZoom': 1.3,
+		'wZoom': 1.1,
+		'type': 'onclick'
+	});
+});
+</code></pre>
+<p style="text-align: justify;">Comme vous pouvez le voir il a trois param&egrave;tres possible qui sont les suivant&nbsp;:<br />
+hZoom&nbsp;: qui doit &ecirc;tre un chiffre, c&rsquo;est le ratio de zoom en hauteur.<br />
+wZoom&nbsp;: qui doit lui aussi &ecirc;tre un chiffre, c&rsquo;est le ration de zoom en largeur.<br />
+type&nbsp;: qui doit cette fois &ecirc;tre une chaine de caract&egrave;res du nom du type de l&rsquo;animation qu&rsquo;on souhaite. Pour l&rsquo;instant il y en a que trois. Le hover, le onclick, et le onclickScale qui permet d&rsquo;agrandir le texte contenu dans les tuiles en proportion aussi.</p>
+<p style="text-align: justify;">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si vous laissez le premier vide, alors le ratio du zoom hauteur (hZoom) sera de 150/100</p>
+<p style="text-align: justify;">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si vous laissez le deuxi&egrave;me vide, alors le ratio du zoom largeur (wZoom) sera de 133.32/100</p>
+<p style="text-align: justify;">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si vous laissez le troisi&egrave;me vide, alors le type d&rsquo;animation sera le onclick basique.</p>
+<p style="text-align: justify;">Voici un autre exemple en tenant compte de la connaissance de ces param&egrave;tres.</p>
+<pre><code>
+$(document).ready(function() {
+	$('#section1').pandoraJS(
+	{
+		'hZoom': 1.6,
+		'type': 'onclickScale'
+	});
+});
+</code></pre>
+<p>&nbsp;</p>
+<h2>
+	F&eacute;licitation&nbsp;!</h2>
+<p>&nbsp;</p>
+<p>Vous avez compl&eacute;tez le tutoriel pour utiliser PandoraJS, n&rsquo;h&eacute;sitez pas &agrave; l&rsquo;inclure dans tous les projets ou vous voyez son utilit&eacute;. Aller voir le code il est comment&eacute; et suffisamment simple pour que tout le monde puisse le comprendre en plus il est publi&eacute; sous la licence MIT donc vous &ecirc;tes libres d&rsquo;en faire ce que vous voulez. Et si vous en avez l&rsquo;envie et le courage venez report les bugs et donner vos suggestions sur la page github du projet, voir m&ecirc;me proposer votre propres commit pour contribuer vous aussi &agrave; l&rsquo;am&eacute;lioration de PandoraJS, car oui cette une premi&egrave;re version et il y a surement plein de nouvelle am&eacute;lioration &agrave; apporter comme par exemple plus d&rsquo;option et g&eacute;n&eacute;ration automatique du css.</p>
+<p>&nbsp;</p>
+  	</div>
+  </body>
+  </html>
